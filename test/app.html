@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="sportsStore">
+<head>
+    <title>SportsStore</title>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script>
+        angular.module("sportsStore",["ngRoute"])
+        .config(['$routeProvider', function($routeProvider) {
+            $routeProvider.when("productList", {
+                templateUrl: "/productList.html"
+
+            })
+        }])
+        .controller('defaultCtrl', ['$scope', function ($scope) {
+            
+        }])
+    </script>
+
+</head>
+<body>
+        <a href="#/productList">show test</a>
+    <ng-view>
+</body>
+</html>
