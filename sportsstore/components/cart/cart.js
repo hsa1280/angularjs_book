@@ -3,6 +3,7 @@ angular.module("cart", [])
 	var cartData = [];
 
 	return {
+
 		addProduct: function(id, name,price) {
 			var addedToExistingItem = false;
 			for(var i = 0; i < cartData.length; i++) {
@@ -34,6 +35,11 @@ angular.module("cart", [])
 		getProducts: function() {
 			return cartData;
 		}
+	}
+})
+.controller("testCtrl", function( $scope ) {
+	$scope.test = {
+		name: 'shian'
 	}
 })
 .directive("cartSummary", function(cart) {
