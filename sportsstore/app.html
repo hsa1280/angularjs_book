@@ -8,17 +8,25 @@
     <script>
         angular.module("sportsStore", ["customFilters", "cart", "ngRoute"])
         .config(function ($routeProvider) {
+            
+            $routeProvider.when("/complete", {
+                templateUrl: "views/thankYou.html"
+            });
+
+            $routeProvider.when("/placeorder", {
+                templateUrl: "views/placeOrder.html"
+            });
 
             $routeProvider.when("/checkout", {
-                templateUrl: "checkoutSummary.html"
+                templateUrl: "views/checkoutSummary.html"
             });
 
             $routeProvider.when("/products", {
-                templateUrl: "productList.html"
+                templateUrl: "views/productList.html"
             });
 
             $routeProvider.otherwise({
-                templateUrl: "productList.html"
+                templateUrl: "views/productList.html"
             });
         });
     </script>
@@ -27,6 +35,7 @@
     <script src="controllers/productListControllers.js"></script>
     <script src="components/cart/cart.js"></script>
     <script src="angular-route.js"></script>
+    <script src="controllers/checkoutControllers.js"></script>
 </head>
 <body ng-controller="sportsStoreCtrl">
     <div class="navbar navbar-inverse">
@@ -34,9 +43,9 @@
         <cart-summary />
     </div>
     <div class="alert alert-danger" ng-show="data.error">
-		Error ({{data.error.status}}). The product data was not loaded.
-		<a href="/sportsstore/app.html" class="alert-link">Click here to try again</a>
-	</div>
-	<ng-view />
+        Error ({{data.error.status}}). The product data was not loaded.
+        <a href="/app.html" class="alert-link">Click here to try again</a>
+    </div>
+    <ng-view />
 </body>
 </html>
