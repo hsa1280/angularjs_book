@@ -7,19 +7,18 @@
     <script>
         angular.module("sportsStore",["ngRoute"])
         .config(['$routeProvider', function($routeProvider) {
-            $routeProvider.when("productList", {
-                templateUrl: "/productList.html"
-
+            $routeProvider.when("/productList", {
+                templateUrl: "productList.html"
             })
         }])
         .controller('defaultCtrl', ['$scope', function ($scope) {
             
-        }])
+        }]);
     </script>
 
 </head>
 <body>
-        <a href="#/productList">show test</a>
+    <a href="#productList">show test</a>
     <ng-view>
 </body>
 </html>
