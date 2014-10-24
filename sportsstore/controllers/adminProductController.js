@@ -26,24 +26,24 @@ angular.module("sportsStoreAdmin")
 		new $scope.productsResource( product ).$save().then( function( newProduct) {
 
 			$scope.products.push( newProduct );
-			$scope.editeProduct = null;
+			$scope.editedProduct = null;
 		});
 	}
 
 	$scope.updateProduct = function( product ) {
 
 		product.$save();
-		$scope.editeProduct = null;
+		$scope.editedProduct = null;
 	}
 
 	$scope.startEdit = function( product ) {
 
-		$scope.editeProduct = product;
+		$scope.editedProduct = product;
 	}
 
 	$scope.cancelEdit = function() {
-		
-		$scope.editeProduct = null;
+
+		$scope.editedProduct = null;
 	}
 
 	$scope.listProducts();
