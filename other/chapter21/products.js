@@ -1,38 +1,37 @@
-angular.module("exampleApp", [])
+angular.module("exampleApp", ["increment", "ngResource"])
 .constant("baseUrl", "http://localhost:5500/products/")
-.controller("defaultCtrl", function ($scope, $http, baseUrl) {
+.controller("defaultCtrl", function ($scope, $http, $resource, baseUrl) {
 
     $scope.displayMode = "list";
     $scope.currentProduct = null;
 
+    $scope.productsResource = $resource(baseUrl + ":id", { id: "@id" });
+
     $scope.listProducts = function () {
-        $http.get(baseUrl).success(function (data) {
-            $scope.products = data;
-        });
+        $scope.products = $scope.productsResource.query();
     }
 
     $scope.deleteProduct = function (product) {
-        $scope.products.splice($scope.products.indexOf(product), 1);
-    }
-
-    $scope.createProduct = function (product) {
-        $scope.products.push(product);
+        product.$delete().then(function () {
+            $scope.products.splice($scope.products.indexOf(product), 1);
+        });
         $scope.displayMode = "list";
     }
 
+    $scope.createProduct = function (product) {
+        new $scope.productsResource(product).$save().then(function(newProduct) {
+            $scope.products.push(newProduct);
+            $scope.displayMode = "list";
+        });
+    }
+
     $scope.updateProduct = function (product) {
-        for (var i = 0; i < $scope.products.length; i++) {
-            if ($scope.products[i].id == product.id) {
-                $scope.products[i] = product;
-                break;
-            }
-        }
+        product.$save();
         $scope.displayMode = "list";
     }
 
     $scope.editOrCreateProduct = function (product) {
-        $scope.currentProduct =
-            product ? angular.copy(product) : {};
+        $scope.currentProduct = product ? product : {};
         $scope.displayMode = "edit";
     }
 
@@ -45,6 +44,9 @@ angular.module("exampleApp", [])
     }
 
     $scope.cancelEdit = function () {
+        if ($scope.currentProduct && $scope.currentProduct.$get) {
+            $scope.currentProduct.$get();
+        }
         $scope.currentProduct = {};
         $scope.displayMode = "list";
     }
