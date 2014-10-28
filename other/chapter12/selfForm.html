@@ -69,7 +69,7 @@
 							{{getCheckboxError(myForm.agree.$error)}}
 						</div>
 					</div>
-					<button class="btn btn-primary btn-block" ng-click="addUser(newUser)" >
+					<button class="btn btn-primary btn-block" ng-click="addUser(newUser)" ng-disabled="myForm.$invalid">
 						Add
 					</button>
 					<p>{{message}}</p>
