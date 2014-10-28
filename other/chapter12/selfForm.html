@@ -1,0 +1,81 @@
+<!doctype html>
+<html ng-app="exampleApp">
+	<head>
+		<title>Forms</title>
+		<script src="angular.js"></script>
+		<link href="bootstrap.css" rel="stylesheet">
+		<link href="bootstrap-theme.css" rel="stylesheet">
+		<script>
+			angular.module("exampleApp", [])
+				.controller("defaultCtrl", function($scope) {
+					$scope.addUser = function( newUser ) {
+						if( angular.isDefined(newUser) && angular.isDefined(newUser.name) && angular.isDefined(newUser.email) &&
+							newUser.agreed ) {
+							$scope.message = newUser.name + ", " + newUser.email + ", " + newUser.agreed;
+						}
+						else {
+							$scope.showValidation = true;
+						}
+						
+					}
+
+					$scope.getError = function( error ) {
+
+						if( error.required ) {
+							return "Please enter a value";
+						}
+						else if( error.email ) {
+							return "Please enter a valid email address";
+						}
+					}
+
+					$scope.getCheckboxError = function( error ) {
+
+						if( error.required ) {
+							return "You must agree to the terms and condtions"
+						}
+					}
+				})
+		</script>
+
+		<style>
+		    .ng-invalid { background-color: lightpink; }
+		    .ng-valid { background-color: lightgreen; }
+		    div.error {color: red; font-weight: bold}
+		</style>
+
+	</head>
+	<body>
+		<div class="panel" ng-controller="defaultCtrl">
+			<form name="myForm" novalidate ng-submit="addUser(newUser)" ng-class="showValidation ? 'validate' : ''">
+				<div class="well">
+					<div class="form-group">
+						<label>Name: </label>
+						<input name="name" type="text" ng-model="newUser.name" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Email: </label>
+						<input name="email" type="email" ng-model="newUser.email" class="form-control" required>
+						<div class="error" ng-show="showValidation">
+							{{getError(myForm.email.$error)}}
+						</div>
+					</div>
+					<div class="checkBox">
+						<label>
+							<input type="checkbox" name="agree" ng-model="newUser.agreed" required />
+							I agree to the terms andconditions
+						</label>
+						<div class="error" ng-show="showValidation">
+							{{getCheckboxError(myForm.agree.$error)}}
+						</div>
+					</div>
+					<button class="btn btn-primary btn-block" ng-click="addUser(newUser)" >
+						Add
+					</button>
+					<p>{{message}}</p>
+					<p>Form valid: {{myForm.$valid}}</p>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
