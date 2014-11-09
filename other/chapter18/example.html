@@ -6,7 +6,7 @@
     <link href="bootstrap.css" rel="stylesheet" />
     <link href="bootstrap-theme.css" rel="stylesheet" />
     <script>
-        angular.module("exampleApp", [])
+        angular.module("exampleApp", ["customDirectives"])
         .controller("defaultCtrl", function ($scope) {
             $scope.data = {
                 cities: ["London", "New York", "Paris"],
@@ -16,22 +16,11 @@
             $scope.$watch('data.totalClicks', function (newVal) {
                 console.log("Total click count: " + newVal);
             });
-        })
-        .directive("triButton", function () {
-            return {
-                scope: { counter: "=counter" },
-                link: function (scope, element, attrs) {
-                    element.on("click", function (event) {
-                        console.log("Button click: " + event.target.innerText);
-                        scope.$apply(function () {
-                            scope.counter++;
-                        });
-                    });
-                }
-            }
         });
     </script>
+    <script src="directives.js"></script>
 </head>
+
 <body ng-controller="defaultCtrl">
     <div class="well">
         <div class="btn-group" tri-button
