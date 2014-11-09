@@ -12,4 +12,14 @@ angular.module("sportsStore")
             { name: "Product #4", description: "A product",
                 category: "Category #3", price: 202 }]
     };
+
+    // $scope.selectedItem;
+    $scope.selectItem = function( item ) {
+        $scope.selectedItem = item;
+    }
+
+    $scope.productsFilter = function( item) {
+
+        return $scope.selectedItem == null || $scope.selectedItem == item.category;
+    } 
 });
