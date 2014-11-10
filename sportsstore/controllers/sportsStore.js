@@ -35,7 +35,7 @@ angular.module("sportsStore")
         return selectedCategory == null || selectedCategory == item.category;
     } 
 
-    $scope.getClass = function( item ) {
+    $scope.getCategoryClass = function( item ) {
         return selectedCategory == item ? hightLightClass : null;
     }
 
