@@ -1,6 +1,8 @@
 angular.module("sportsStore")
-.constant('hightLightCategory', "btn-primary")
-.controller("sportsStoreCtrl", function ($scope, hightLightCategory) {
+.constant('hightLightClass', "btn-primary")
+.constant("productListPageCount", 3)
+.controller("sportsStoreCtrl", function ($scope, $filter, 
+    hightLightClass,productListPageCount) {
 
     $scope.data = {
         products: [
@@ -15,8 +17,17 @@ angular.module("sportsStore")
     };
 
     var selectedCategory = null;
+
+    $scope.selectedPage = 1;
+    $scope.pageSize = productListPageCount;
     $scope.selectItem = function( item ) {
         selectedCategory = item;
+        $scope.selectedPage = 1;
+    }
+
+    $scope.selectPage = function( newPage ) {
+        $scope.selectedPage = newPage;
+        console.log(newPage);
     }
 
     $scope.productsFilter = function( item ) {
@@ -25,6 +36,10 @@ angular.module("sportsStore")
     } 
 
     $scope.getClass = function( item ) {
-        return selectedCategory == item ? hightLightCategory : null;
+        return selectedCategory == item ? hightLightClass : null;
+    }
+
+    $scope.getPageClass = function( page ) {
+        return $scope.selectedPage == page? hightLightClass : null;
     }
 });
