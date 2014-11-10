@@ -1,5 +1,6 @@
 angular.module("sportsStore")
-.controller("sportsStoreCtrl", function ($scope) {
+.constant('hightLightCategory', "btn-primary")
+.controller("sportsStoreCtrl", function ($scope, hightLightCategory) {
 
     $scope.data = {
         products: [
@@ -13,13 +14,17 @@ angular.module("sportsStore")
                 category: "Category #3", price: 202 }]
     };
 
-    // $scope.selectedItem;
+    var selectedCategory = null;
     $scope.selectItem = function( item ) {
-        $scope.selectedItem = item;
+        selectedCategory = item;
     }
 
-    $scope.productsFilter = function( item) {
+    $scope.productsFilter = function( item ) {
 
-        return $scope.selectedItem == null || $scope.selectedItem == item.category;
+        return selectedCategory == null || selectedCategory == item.category;
     } 
+
+    $scope.getClass = function( item ) {
+        return selectedCategory == item ? hightLightCategory : null;
+    }
 });
