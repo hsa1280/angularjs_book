@@ -10,6 +10,7 @@
     </script>
     <script src="controllers/sportsStore.js"></script>
     <script src="filters/customFilters.js"></script>
+    <script src="controllers/productListControllers.js"></script>
 </head>
 <body ng-controller="sportsStoreCtrl">
 
@@ -19,7 +20,10 @@
     <div class="navbar navbar-inverse">
         <a class="navbar-brand" href="#">SPORTS STORE</a>
     </div>
-    <div class="panel panel-default row">
+    <div class="alert laert-danger" ng-show="data.error">
+        <p>Error({{data.error.message}}). The product data was not loaded.</p>
+    </div>
+    <div class="panel panel-default row" ng-controller="productListCtrl" ng-hide="data.error">
         <div class="col-xs-3">
             <div class=" btn btn-block btn-default btn-lg" ng-click="selectItem()">
                 Home
