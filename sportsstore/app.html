@@ -6,11 +6,12 @@
     <link href="bootstrap.css" rel="stylesheet" />
     <link href="bootstrap-theme.css" rel="stylesheet" />
     <script>
-        angular.module("sportsStore", ["customFilters"]);
+        angular.module("sportsStore", ["customFilters", "cart"]);
     </script>
     <script src="controllers/sportsStore.js"></script>
     <script src="filters/customFilters.js"></script>
     <script src="controllers/productListControllers.js"></script>
+    <script src="components/cart/cart.js"></script>
 </head>
 <body ng-controller="sportsStoreCtrl">
 
@@ -19,36 +20,11 @@
 
     <div class="navbar navbar-inverse">
         <a class="navbar-brand" href="#">SPORTS STORE</a>
+        <cart-summary>
     </div>
     <div class="alert laert-danger" ng-show="data.error">
         <p>Error({{data.error.message}}). The product data was not loaded.</p>
     </div>
-    <div class="panel panel-default row" ng-controller="productListCtrl" ng-hide="data.error">
-        <div class="col-xs-3">
-            <div class=" btn btn-block btn-default btn-lg" ng-click="selectItem()">
-                Home
-            </div>
-             <div ng-repeat="product in data.products | unique: 'category'" class=" btn btn-block btn-default btn-lg" ng-click="selectItem(product)"  ng-class="getCategoryClass(product)">
-             <!-- Don't forget to put single quotes for category -->
-             <!-- The filter should be placed inside the data -->
-             <!--The product in the <p> had already been filtered -->
-                <p>{{product}}</p>
-             </div>
-        </div>
-        <div class="col-xs-8">
-            <div class="well" ng-repeat="item in data.products | filter:productsFilter | range: selectedPage: pageSize">
-                <h3>
-                    <strong>{{item.name}}</strong>
-                    <span class="pull-right label label-primary">{{item.price | currency}}</span>
-                </h3>
-                <span class="lead">{{item.description}}</span>
-            </div>
-            <div class="pull-right btn-group">
-                <a ng-repeat="page in data.products | filter: productsFilter | pageCount: pageSize" ng-click="selectPage($index + 1)" class="btn btn-default" ng-class="getPageClass($index + 1)">
-                    {{$index + 1}}
-                </a>
-            </div>
-        </div>
-    </div>
+    <ng-include src="'views/productList.html'"></ng-include>
 </body>
 </html>

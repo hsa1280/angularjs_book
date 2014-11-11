@@ -1,7 +1,7 @@
 angular.module("sportsStore")
 .constant('hightLightClass', "btn-primary")
 .constant("productListPageCount", 3)
-.controller('productListCtrl', function( $scope, $filter, hightLightClass, productListPageCount){
+.controller('productListCtrl', function( $scope, $filter, hightLightClass, productListPageCount, cart){
 	
 	var selectedCategory = null;
 
@@ -29,4 +29,8 @@ angular.module("sportsStore")
 	$scope.getPageClass = function( page ) {
     	return $scope.selectedPage == page? hightLightClass : null;
 	}
+
+    $scope.addProduct = function(item) {
+        cart.addProduct(item.id, item.name, item.price);
+    }
 })
