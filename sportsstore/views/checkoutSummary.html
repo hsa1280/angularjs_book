@@ -10,7 +10,9 @@
 				<td>{{product.name}}</td>
 				<td class="text-right">{{product.price | currency}}</td>
 				<td class="text-right">{{getSubtotal(product) | currency}}</td>
+				<td><button ng-click="removeProduct(product)" class="btn btn-sm btn-warning">Remove</button></td>
 			</tr>
+
 		</tbody>
 		<tfoot>
 			<tr>
@@ -21,5 +23,8 @@
 			</tr>
 		</tfoot>
 	</table>
+	<div class="text-center">
+		<a href="#/products" class="btn btn-primary">Continue shopping</a>
+		<a href="#/placeOrder" class="btn btn-primary">Place order</a>
+	</div>
 </div>
-<a href="#/products" class="btn btn-primary">Back</a>

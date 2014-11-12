@@ -16,4 +16,8 @@ angular.module("sportsStore")
 
 		return total;
 	}
+
+	$scope.removeProduct = function(product) {
+		cart.removeProduct(product.id);
+	}
 })
