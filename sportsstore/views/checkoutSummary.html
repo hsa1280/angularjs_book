@@ -1,0 +1,25 @@
+<div class="lead" ng-controller="checkoutCtrl">
+	Your cart
+	<table class="table">
+		<thead>
+			<tr><th>Quantity</th><th>Item</th><th class="text-right">Price</th><th class="text-right">Subtotal</th></tr>
+		</thead>
+		<tbody ng-repeat="product in cartData">
+			<tr>
+				<td>{{product.count}}</td>
+				<td>{{product.name}}</td>
+				<td class="text-right">{{product.price | currency}}</td>
+				<td class="text-right">{{getSubtotal(product) | currency}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3" class="text-right">Total:</td>
+				<td class="text-right">
+					{{getTotal() | currency}}
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<a href="#/products" class="btn btn-primary">Back</a>
