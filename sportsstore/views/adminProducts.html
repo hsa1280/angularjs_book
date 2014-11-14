@@ -11,26 +11,27 @@
 				<td>{{product.price}}</td>
 				<td>
 					<button class="btn btn-primary" ng-click="startEdit(product)">Edit</button>
-					<button class="btn btn-primary" ng-click="deleteProduct(product)">Delete</button>
+					<!-- <button class="btn btn-primary" ng-click="deleteProduct(product)">Delete</button> -->
+					<button class="btn btn-primary" confirmed-click="deleteProduct(product)" ng-confirm-click="Are you sure to delete this item?">Delete</button>
 				</td>
 			</tr>
-			<tr ng-hide="editedProduct">
+<!-- 			<tr>
 				<td><input ng-model="product.name" required /></td>
 				<td><input ng-model="product.description" required /></td>
 				<td><input ng-model="product.category" required /></td>
 				<td><input ng-model="product.price" required /></td>
-				<td><button class="btn btn-primary" ng-click="createProduct(product)">Create</button></td>
-			</tr>
-			<tr ng-show="editedProduct">
+				<td><button class="btn btn-primary" ng-click="createProduct(product)" ng-hide="">Create</button></td>
+			</tr> -->
+			<tr>
 				<td><input ng-model="editedProduct.name"></input></td>
 				<td><input ng-model="editedProduct.description"></input></td>
 				<td><input ng-model="editedProduct.category"></input></td>
 				<td><input ng-model="editedProduct.price"></input></td>
 				<td>
-					<button class="btn btn-primary" ng-click="updateProduct(editedProduct)">Save</button>
+					<button class="btn btn-primary" ng-click="createProduct(product)" ng-hide="editedProduct.id">Create</button>
+					<button class="btn btn-primary" ng-click="updateProduct(editedProduct)" ng-show="editedProduct.id">Save</button>
 					<button class="btn btn-primary" ng-click="cancelEdit()">Cancel</button>
 				</td>
-
 			</tr>
 		</tbody>
 	</table>

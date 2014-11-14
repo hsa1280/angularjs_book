@@ -40,3 +40,19 @@ angular.module("sportsStoreAdmin")
 
 	$scope.listProducts();
 })
+.directive("ngConfirmClick", function() {
+	return {
+		link: function(scope, element, attr) {
+			// var msg = attr["ngConfirmClick"];
+			// var clickAction = attr["confirmedClick"];
+			var msg = attr.onConfirmClick;
+			var clickAction = attr.confirmedClick;
+			console.log("msg-- " + msg + ", " + "clickAction-- " + clickAction);
+			element.bind("click", function() {
+				if(confirm(msg)) {
+					scope.$apply(clickAction);
+				}
+			})
+		}
+	}
+})

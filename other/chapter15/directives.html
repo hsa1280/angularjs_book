@@ -2,30 +2,40 @@
 <head>
     <title>Directives</title>
     <script src="angular.js"></script>
-    <style>
-        .bold { font-weight: bold; }
-    </style>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
     <script>
-        angular.module("exampleApp", [])
-            .directive("Directive", function () {
-                return {
-                    template: 
-                        "<div class='panel-body' ng-transclude><input ng-model='local' /></div>",
-                    scope: {
-                        local: "=nameprop"
-                    },
-                    transclude: true
+angular.module("exampleApp", [])
+            .directive("unorderedList", function () {
+                return function (scope, element, attrs) {
+                    // var data = scope[attrs["unorderedList"]];
+                    var data = scope[attrs.unorderedList];
+                    if (angular.isArray(data)) {
+                        for (var i = 0; i < data.length; i++) {
+                            console.log("Item: " + data[i].name);
+                        }
+                    }
                 }
             })
+
             .controller("defaultCtrl", function ($scope) {
-                    $scope.data = {
-                        name: "good"
-                    }
-                })              
+                $scope.products = [
+                    { name: "Apples", category: "Fruit", price: 1.20, expiry: 10 },
+                    { name: "Bananas", category: "Fruit", price: 2.42, expiry: 7 },
+                    { name: "Pears", category: "Fruit", price: 2.02, expiry: 6 }
+                ];
+            })
     </script>
 </head>
 <body ng-controller="defaultCtrl">
-    <div>Data from controller:{{data.name}}</div><br>
-    <Directive class="panel-body" nameprop="data.name"></Directive>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Products</h3>
+        </div>
+        <div class="panel-body">
+            <div unordered-list="products"></div>
+        </div>
+    </div>
 </body>
+
 </html>
