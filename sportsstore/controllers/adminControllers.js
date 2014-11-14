@@ -40,7 +40,6 @@ angular.module("sportsStoreAdmin")
 	})
 
 	$scope.getOrderTotalValue = function(order) {
-		console.log(order.products[0].price);
 		var total = 0;
 		for(var i = 0; i < order.products.length;i++) {
 			total += order.products[i].price * order.products[i].count;
