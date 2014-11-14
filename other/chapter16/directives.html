@@ -12,8 +12,7 @@
                         scope.data = scope[attrs["unorderedList"]];
                     },
                     restrict: "A",
-                    template: "<ul ng-repeat='item in products'><li>"
-                        + "{{item.name}}</li><li>{{item.category}}</li><li>{{item.price}}</li></ul>"
+                    templateUrl: "itemTemplate.html"
                 }
             }).controller("defaultCtrl", function ($scope) {
                 $scope.products = [

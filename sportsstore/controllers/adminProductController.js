@@ -43,14 +43,12 @@ angular.module("sportsStoreAdmin")
 .directive("ngConfirmClick", function() {
 	return {
 		link: function(scope, element, attr) {
-			// var msg = attr["ngConfirmClick"];
-			// var clickAction = attr["confirmedClick"];
 			var msg = attr.onConfirmClick;
 			var clickAction = attr.confirmedClick;
-			console.log("msg-- " + msg + ", " + "clickAction-- " + clickAction);
-			element.bind("click", function() {
+			element.on("click", function() {
 				if(confirm(msg)) {
 					scope.$apply(clickAction);
+					//can use either $eval or $apply
 				}
 			})
 		}
