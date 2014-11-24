@@ -10,7 +10,7 @@
 				<td>{{product.name}}</td>
 				<td>{{product.description}}</td>
 				<td>{{product.category}}</td>
-				<td>{{product.price}}</td>
+				<td>{{product.price | currency}}</td>
 				<td>
 					<button class="btn btn-primary" ng-click="startEdit(product)">Edit</button>
 					<!-- <button class="btn btn-primary" ng-click="deleteProduct(product)">Delete</button> -->

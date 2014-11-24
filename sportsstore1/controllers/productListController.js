@@ -1,0 +1,43 @@
+angular.module("sportsStore")
+.constant('categoryClass', "btn btn-block btn-primary")
+.constant('pageClass', "btn btn-primary")
+.controller("productListCtrl", function($scope, categoryClass, pageClass) {
+
+	$scope.data = {
+		 products: 
+		 [
+			 { name: "Product #1", description: "A product", category: "Category #1", price: 100 },
+			 { name: "Product #2", description: "A product", category: "Category #1", price: 110 },
+			 { name: "Product #3", description: "A product", category: "Category #2", price: 210 },
+			 { name: "Product #4", description: "A product", category: "Category #3", price: 202 }
+		 ]
+	};
+
+	$scope.itemsPerPage = 3;
+	$scope.selectedPage = 1;
+
+	var selectedCategory = null;
+
+	$scope.selectCategory = function(category) {
+		selectedCategory = category;
+	}
+
+	$scope.selectPage = function(page) {
+		console.log(page);
+		$scope.selectedPage = page;
+	}
+
+	$scope.productsFilter = function(product) {
+		return selectedCategory == null || selectedCategory == product.category;
+	}
+
+	$scope.getCategoryClass = function(category) {
+
+		return selectedCategory == category? categoryClass : "btn btn-block btn-default";
+	}
+
+	$scope.getPageClass = function(page) {
+
+		return $scope.selectedPage == page? pageClass : "btn btn-default";
+	}
+})

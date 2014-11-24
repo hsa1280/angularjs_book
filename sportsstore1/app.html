@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="sportsStore">
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>Sport Store</title>
+		<script src="angular.js"></script>
+		<link href="bootstrap.css" rel="stylesheet">
+		<link href="bootstrap-theme.css" rel="stylesheet">
+		<script>
+			angular.module("sportsStore", ["customFilter"]);
+		</script>
+		<script src="controllers/sportsController.js"></script>
+		<script src="controllers/productListController.js"></script>
+		<script src="filters/customFilter.js"></script>
+	</head>
+	<body ng-controller="sportsCtrl">
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+		</script>
+	    <div class="panel panel-default row" ng-controller="productListCtrl">
+	        <div class="col-xs-3">
+	        	<div>
+	        		<a class=" btn btn-block btn-default btn-lg" ng-click="selectCategory()">
+	            		Home
+	            	</a>
+	        	</div>
+	        	<div ng-repeat="category in data.products | categoryFilter:'category'">
+	            	<a class=" btn btn-block btn-default" ng-click="selectCategory(category)" ng-class="getCategoryClass(category)">
+	            		<strong>{{category}}</strong>
+	            	</a>
+	        	</div>
+	        </div>
+	        <div class="col-xs-8">
+	        	<div class="well" ng-repeat="product in data.products | filter:productsFilter | pageSelectFilter: selectedPage:itemsPerPage">
+	        		<!-- When using a function as filter, we don't need to pass the product as the argument, the product will be passed to the filter function automatically -->
+	        		<h3>
+		            	<strong>{{product.name}}</strong>
+		            	<span class="pull-right label label-primary">{{product.price | currency}}</span>
+	            	</h3>
+	            	<span>{{product.description}}</span>
+	        	</div>
+	        	<div class="pull-right btn-group" ng-repeat="page in data.products | pageCountFilter: itemsPerPage">
+        			<span class="btn btn-default" ng-click="selectPage(page)" ng-class="getPageClass(page)">{{page}}</span>
+        		</div>
+	        </div>
+	    </div>
+	</body>
+</html>
