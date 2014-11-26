@@ -16,7 +16,9 @@ angular.module("customFilter",[])
 		for(var i = 1; i <= Math.ceil(data.length/itemsPerPage); i++) {
 			page.push(i);
 		}
+		console.log("before reverse " + page);
 		page.reverse();
+		console.log("after reverse " + page);
 		return page;
 	}
 })

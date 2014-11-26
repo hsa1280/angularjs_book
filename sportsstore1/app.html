@@ -23,14 +23,14 @@
 	            		Home
 	            	</a>
 	        	</div>
-	        	<div ng-repeat="category in data.products | categoryFilter:'category'">
+	        	<div ng-repeat="category in products | categoryFilter:'category'">
 	            	<a class=" btn btn-block btn-default" ng-click="selectCategory(category)" ng-class="getCategoryClass(category)">
 	            		<strong>{{category}}</strong>
 	            	</a>
 	        	</div>
 	        </div>
 	        <div class="col-xs-8">
-	        	<div class="well" ng-repeat="product in data.products | filter:productsFilter | pageSelectFilter: selectedPage:itemsPerPage">
+	        	<div class="well" ng-repeat="product in products | filter:productsFilter | pageSelectFilter: selectedPage:itemsPerPage">
 	        		<!-- When using a function as filter, we don't need to pass the product as the argument, the product will be passed to the filter function automatically -->
 	        		<h3>
 		            	<strong>{{product.name}}</strong>
@@ -38,8 +38,8 @@
 	            	</h3>
 	            	<span>{{product.description}}</span>
 	        	</div>
-	        	<div class="pull-right btn-group" ng-repeat="page in data.products | pageCountFilter: itemsPerPage">
-        			<span class="btn btn-default" ng-click="selectPage(page)" ng-class="getPageClass(page)">{{page}}</span>
+	        	<div class="pull-right btn-group" ng-repeat="page in products |filter:productsFilter | pageCountFilter: itemsPerPage">
+        			<span class="btn btn-default" ng-click="selectPage(page)" ng-class="getPageClass(page)">{{$index+1}}</span>
         		</div>
 	        </div>
 	    </div>

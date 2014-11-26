@@ -3,15 +3,15 @@ angular.module("sportsStore")
 .constant('pageClass', "btn btn-primary")
 .controller("productListCtrl", function($scope, categoryClass, pageClass) {
 
-	$scope.data = {
-		 products: 
-		 [
-			 { name: "Product #1", description: "A product", category: "Category #1", price: 100 },
-			 { name: "Product #2", description: "A product", category: "Category #1", price: 110 },
-			 { name: "Product #3", description: "A product", category: "Category #2", price: 210 },
-			 { name: "Product #4", description: "A product", category: "Category #3", price: 202 }
-		 ]
-	};
+	// $scope.data = {
+	// 	 products: 
+	// 	 [
+	// 		 { name: "Product #1", description: "A product", category: "Category #1", price: 100 },
+	// 		 { name: "Product #2", description: "A product", category: "Category #1", price: 110 },
+	// 		 { name: "Product #3", description: "A product", category: "Category #2", price: 210 },
+	// 		 { name: "Product #4", description: "A product", category: "Category #3", price: 202 }
+	// 	 ]
+	// };
 
 	$scope.itemsPerPage = 3;
 	$scope.selectedPage = 1;
@@ -23,7 +23,6 @@ angular.module("sportsStore")
 	}
 
 	$scope.selectPage = function(page) {
-		console.log(page);
 		$scope.selectedPage = page;
 	}
 
