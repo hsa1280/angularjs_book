@@ -39,7 +39,7 @@
 	            	<span>{{product.description}}</span>
 	        	</div>
 	        	<div class="pull-right btn-group" ng-repeat="page in products |filter:productsFilter | pageCountFilter: itemsPerPage">
-        			<span class="btn btn-default" ng-click="selectPage(page)" ng-class="getPageClass(page)">{{$index+1}}</span>
+        			<span class="btn btn-default" ng-click="selectPage(page)" ng-class="getPageClass(page)">{{page}}</span>
         		</div>
 	        </div>
 	    </div>

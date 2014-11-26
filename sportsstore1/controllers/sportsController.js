@@ -5,5 +5,6 @@ angular.module("sportsStore")
 	$http.get(productUrl)
 		.success(function(data) {
 			$scope.products = data;
+			// We can't define a property in this way: $scope.data.products, since the $scope.data is undefined.
 		});
 })

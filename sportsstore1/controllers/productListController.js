@@ -20,6 +20,7 @@ angular.module("sportsStore")
 
 	$scope.selectCategory = function(category) {
 		selectedCategory = category;
+		$scope.selectedPage = 1;
 	}
 
 	$scope.selectPage = function(page) {
