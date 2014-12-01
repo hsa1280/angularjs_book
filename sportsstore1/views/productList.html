@@ -18,6 +18,7 @@
         	<span class="pull-right label label-primary">{{product.price | currency}}</span>
     	</h3>
     	<span>{{product.description}}</span>
+    	<button class="pull-right btn btn-success" ng-click="addProduct(product)">Add to cart</button>
 	</div>
 	<div class="pull-right btn-group" ng-repeat="page in products |filter:productsFilter | pageCountFilter: itemsPerPage">
 		<span class="btn btn-default" ng-click="selectPage(page)" ng-class="getPageClass(page)">{{page}}</span>
