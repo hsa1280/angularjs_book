@@ -49,9 +49,6 @@ angular.module("sportsStore")
 
 	$scope.addProduct = function(product) {
 		cart.addToCart(product);
-		console.log("product info: id-" + product.id + ", name-" + product.name + ", price-" + product.price);
-		console.log("Added to cart");
-		console.log($scope.shoppingCart());
 	}
 
 	$scope.removeProduct = function(product) {

@@ -29,7 +29,6 @@ angular.module("cart", [])
 					});
 				}
 			}
-			console.log("shopping cart info " + shoppingCart);
 		},
 
 		getShoppingCart: function() {

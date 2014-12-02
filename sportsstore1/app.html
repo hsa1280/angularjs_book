@@ -4,10 +4,23 @@
 		<meta charset="UTF-8">
 		<title>Sport Store</title>
 		<script src="angular.js"></script>
+		<script src="angular-route.js"></script>
 		<link href="bootstrap.css" rel="stylesheet">
 		<link href="bootstrap-theme.css" rel="stylesheet">
 		<script>
-			angular.module("sportsStore", ["customFilter", "cart"]);
+			angular.module("sportsStore", ["customFilter", "cart", "ngRoute"])
+			.config(function($routeProvider) {
+				
+				$routeProvider.when("/checkout", {
+					templateUrl: "views/checkout.html"
+				})
+				$routeProvider.when("/products", {
+					templateUrl: "views/productList.html"
+				})
+				$routeProvider.otherwise({
+					templateUrl: "views/productList.html"
+				})
+			})
 		</script>
 		<script src="controllers/sportsController.js"></script>
 		<script src="controllers/productListController.js"></script>
@@ -22,7 +35,8 @@
         		<a class="navbar-brand" href="#">SPORTS STORE</a>
         		<cart-summary />
     		</div>
-    		<ng-include src="'views/productList.html'"></ng-include>
+    		 <div ng-view></div>
+    		<!-- <ng-include src="'views/productList.html'"></ng-include> -->
 	    </div>
 	</body>
 </html>
