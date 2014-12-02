@@ -26,17 +26,17 @@
 		<script src="controllers/productListController.js"></script>
 		<script src="filters/customFilter.js"></script>
 		<script src="components/cart.js"></script>
+		<script src="controllers/cartController.js"></script>
 	</head>
 	<body ng-controller="sportsCtrl">
 		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 		</script>
 	    <div class="panel panel-default row" ng-controller="productListCtrl">
-	    	<div class="navbar navbar-inverse">
-        		<a class="navbar-brand" href="#">SPORTS STORE</a>
-        		<cart-summary />
-    		</div>
-    		 <div ng-view></div>
-    		<!-- <ng-include src="'views/productList.html'"></ng-include> -->
+	    <div class="text-right navbar navbar-inverse">
+	        <a class="navbar-brand" href="#/">SPORTS STORE</a>
+	        <cart-summary>
 	    </div>
+    	<ng-view>
+    		<!-- <ng-include src="'views/productList.html'"></ng-include> -->
 	</body>
 </html>

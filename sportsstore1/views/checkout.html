@@ -1,3 +1,21 @@
-<div>
-	Checkout goes here.
+<div ng-controller="cartCtrl">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="text-center">Quantity</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Subtotal</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="product in cartData">
+				<td class="text-center">{{product.count}}</td>
+				<td>{{product.name}}</td>
+				<td>{{product.price}}</td>
+				<td>{{subTotal(product)}}</td>
+			</tr>
+			<tr><th colspan="4" class="text-right">Total:{{getTotal()}}</th></tr>
+		</tbody>
+	</table>
 </div>
