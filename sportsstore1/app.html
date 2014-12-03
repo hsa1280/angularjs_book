@@ -17,6 +17,12 @@
 				$routeProvider.when("/products", {
 					templateUrl: "views/productList.html"
 				})
+				$routeProvider.when("/complete", {
+					templateUrl: "views/placeOrder.html"
+				})
+				$routeProvider.when("/thankyou", {
+					templateUrl: "/views/thankyou.html"
+				})
 				$routeProvider.otherwise({
 					templateUrl: "views/productList.html"
 				})
@@ -31,12 +37,13 @@
 	<body ng-controller="sportsCtrl">
 		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 		</script>
-	    <div class="panel panel-default row" ng-controller="productListCtrl">
-	    <div class="text-right navbar navbar-inverse">
-	        <a class="navbar-brand" href="#/">SPORTS STORE</a>
-	        <cart-summary>
-	    </div>
-    	<ng-view>
+	    <div ng-controller="productListCtrl">
+		    <div class="text-right navbar navbar-inverse">
+		        <a class="navbar-brand" href="#/">SPORTS STORE</a>
+		        <cart-summary>
+		    </div>
+	    	<ng-view>
     		<!-- <ng-include src="'views/productList.html'"></ng-include> -->
+    	</div>
 	</body>
 </html>

@@ -1,0 +1,41 @@
+<div style="margin-left: 100px; margin-right: 100px" ng-controller="cartCtrl">
+	<h3>Please enter your shipping information.</h3>
+	<form name="shippingForm">
+		<div>
+			<label>Name:</label><br>
+			<input type="text" class="form-control" ng-model="shipping.name" placeholder="Name" size="100" required/>
+		</div>
+		<br>
+		<div>
+			<label>Street Address:</label><br>
+			<input type="text" class="form-control" ng-model="shipping.address" placeholder="Street Address" size="100" required/>
+		</div>
+		<br>
+		<div>
+			<label>City:</label><br>
+			<input type="text" class="form-control" ng-model="shipping.city" placeholder="City" size="100" required/>
+		</div>
+		<br>
+		<div>
+			<label>State:</label><br>
+			<input type="text" class="form-control" ng-model="shipping.state" placeholder="State" size="100" required/>
+		</div>
+		<br>
+		<div>
+			<label>Zip:</label><br>
+			<input type="text" class="form-control" ng-model="shipping.zip" placeholder="Zip" size="100" required/>
+		</div>
+		<br>
+		<div>
+			<label>Country:</label><br>
+			<input type="text" class="form-control" ng-model="shipping.country" placeholder="Country" size="100" required/>
+		</div>
+		<h3>Options</h3>
+		<input type="checkbox" ng-model="shipping.gift" /> Gift wrap these items
+		<br>
+		<br>
+		<div class="text-center">
+			<button class="btn btn-primary" ng-disabled=shippingForm.$invalid ng-click="sendOrder(shipping)">Complete order</button>
+		</div>
+	</form>
+</div>
