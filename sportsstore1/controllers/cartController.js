@@ -16,4 +16,22 @@ angular.module("sportsStore")
 
 		return total;
 	}
+
+	$scope.removeProduct = function(product) {
+		cart.removeProduct(product);
+	}
+})
+.directive("deleteConfirm", function() {
+	return {
+		restrict: "A",
+		link: function(scope, element, attrs) {
+			element.on("click", function() {
+				var message = attrs["confirmMessage"];
+				var toCall = attrs["deleteConfirm"];
+				if(confirm(message)) {
+					scope.$apply(toCall);
+				}
+			})
+		}
+	}
 })

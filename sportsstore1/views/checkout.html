@@ -6,6 +6,7 @@
 				<th>Name</th>
 				<th>Price</th>
 				<th>Subtotal</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -14,8 +15,9 @@
 				<td>{{product.name}}</td>
 				<td>{{product.price}}</td>
 				<td>{{subTotal(product)}}</td>
+				<td><button class="btn btn-danger" confirm-message="Are you sure to delete?" delete-confirm="removeProduct(product)">Remove</button></td>
 			</tr>
-			<tr><th colspan="4" class="text-right">Total:{{getTotal()}}</th></tr>
+			<tr><th colspan="3" class="text-right">Total:{{getTotal()}}</th></tr>
 		</tbody>
 	</table>
 </div>
