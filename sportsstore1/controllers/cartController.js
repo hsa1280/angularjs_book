@@ -1,5 +1,5 @@
 angular.module("sportsStore")
-.constant("orderUrl", "http://localhost:5500/orders")
+.constant("orderUrl", "http://localhost:5500/orders/")
 .controller("cartCtrl", function($scope, $http, $location, cart, orderUrl) {
 	$scope.cartData = cart.getShoppingCart();
 
@@ -26,9 +26,16 @@ angular.module("sportsStore")
 		var data = angular.copy(shippingData);
 		data.products = $scope.cartData;
 		$http.post(orderUrl, data)
-			.success(function(data) {
-			});
-		$location.path("/thankyou");
+		.success(function(data) {
+
+		})
+		.error(function (error) {
+
+		})
+		.finally(function() {
+			$location.path("/thankyou");
+		});
+
 	}
 })
 .directive("deleteConfirm", function() {
