@@ -21,7 +21,6 @@ angular.module("sportsStore")
             order.products = cart.getProducts();
             $http.post(orderUrl, order)
                 .success(function (data) {
-                	debugger;
                     $scope.data.orderId = data.id;
                     cart.getProducts().length = 0;
                 })
