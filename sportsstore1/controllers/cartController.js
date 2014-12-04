@@ -1,5 +1,4 @@
 angular.module("sportsStore")
-.constant("orderUrl", "http://localhost:5500/orders")
 .controller("cartCtrl", function($scope, $http, $location, cart, orderUrl) {
 	$scope.cartData = cart.getShoppingCart();
 
@@ -38,23 +37,23 @@ angular.module("sportsStore")
 
 	// }
 
-    $scope.sendOrder = function (shippingDetails) {
-	    var order = angular.copy(shippingDetails);
-	    order.products = cart.getShoppingCart();
-	    $http.post(orderUrl, order)
-        .success(function (data) {
-        	console.log("success");
-            $scope.orderId = data.id;
-            cart.getShoppingCart().length = 0;
-        })
-        .error(function (error) {
-        	console.log("error");
-            $scope.orderError = error;
-        }).finally(function () {
-        	console.log("finally");
-            $location.path("/thankyou");
-        });
-    }
+    // $scope.sendOrder = function (shippingDetails) {
+	   //  var order = angular.copy(shippingDetails);
+	   //  order.products = cart.getShoppingCart();
+	   //  $http.post(orderUrl, order)
+    //     .success(function (data) {
+    //     	console.log("success");
+    //         $scope.orderId = data.id;
+    //         cart.getShoppingCart().length = 0;
+    //     })
+    //     .error(function (error) {
+    //     	console.log("error");
+    //         $scope.orderError = error;
+    //     }).finally(function () {
+    //     	console.log("finally");
+    //         $location.path("/thankyou");
+    //     });
+    // }
 })
 .directive("deleteConfirm", function() {
 	return {
